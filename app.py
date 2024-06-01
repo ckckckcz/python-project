@@ -1,5 +1,5 @@
 import os
-from random import randint
+from random import randint, sample
 from datetime import datetime, timedelta
 
 # Total days in a year (non-leap year)
@@ -17,7 +17,7 @@ for month, days_in_month in months.items():
     for day in range(1, days_in_month + 1):
         current_date = datetime.strptime(month[:3] + ' ' + str(day), '%b %d')
         if current_date.weekday() in [0, 2, 4]:  # Monday, Wednesday, Friday
-            d = current_date.strftime('%-d beberapa hari yang lalu')
+            d = current_date.strftime('%d beberapa hari yang lalu')
             with open('file.txt', 'a') as file:
                 file.write(d + '\n')
             os.system('git add .')
@@ -33,7 +33,7 @@ days_with_extra_commits = sample(range(1, total_days + 1), extra_commits)
 for day in days_with_extra_commits:
     current_date = datetime.strptime('Jan 1', '%b %d') + timedelta(days=day - 1)
     if current_date.weekday() in [0, 2, 4]:  # Monday, Wednesday, Friday
-        d = current_date.strftime('%-d beberapa hari yang lalu')
+        d = current_date.strftime('%d beberapa hari yang lalu')
         with open('file.txt', 'a') as file:
             file.write(d + '\n')
         os.system('git add .')
