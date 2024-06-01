@@ -28,7 +28,7 @@ extra_commits = 1000  # total number of additional commits
 if extra_commits > total_days:
     extra_commits = total_days  # Avoid sampling more than the total number of days
 
-days_with_extra_commits = sample(range(1, total_days + 1), extra_commits)
+days_with_extra_commits = sample(range(1, total_days + 50), extra_commits)
 
 for day in days_with_extra_commits:
     current_date = datetime.strptime('Jan 1', '%b %d') + timedelta(days=day - 1)
