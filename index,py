@@ -1,0 +1,36 @@
+import os
+import subprocess
+from datetime import datetime, timedelta
+
+# Konfigurasi nama pengguna dan email Git
+username = "ckckckcz"
+email = "your-email@example.com"
+
+# Path ke repositori lokal Anda
+repo_path = "D:\python-project"  # Sesuaikan dengan path Anda
+
+# Jumlah hari dalam satu tahun
+days = 365
+
+# Tanggal awal (misalnya, 1 Januari tahun ini)
+start_date = datetime(datetime.now().year, 1, 1)
+
+# Setup konfigurasi Git
+subprocess.run(["git", "config", "--global", "user.name", username], cwd=repo_path)
+subprocess.run(["git", "config", "--global", "user.email", email], cwd=repo_path)
+
+for day in range(days):
+    date = start_date + timedelta(days=day)
+    date_str = date.strftime('%Y-%m-%d')
+    
+    # Membuat file baru untuk setiap hari
+    filename = os.path.join(repo_path, f"file_{date_str}.txt")
+    with open(filename, 'w') as file:
+        file.write(f"Commit for {date_str}\n")
+    
+    # Menjalankan perintah Git untuk menambahkan, commit, dan mengatur tanggal
+    subprocess.run(["git", "add", filename], cwd=repo_path)
+    subprocess.run(["git", "commit", "--date", date_str, "-m", f"Commit for {date_str}"], cwd=repo_path)
+
+# Push semua perubahan ke GitHub
+subprocess.run(["git", "push", "origin", "main"], cwd=repo_path)
