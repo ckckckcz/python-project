@@ -14,7 +14,11 @@ for i in range(1, total_days + 1):
 
 # Add extra commits to random days to spread out contributions
 extra_commits = 1000  # total number of additional commits
+if extra_commits > total_days:
+    extra_commits = total_days  # Avoid sampling more than the total number of days
+
 days_with_extra_commits = sample(range(1, total_days + 1), extra_commits)
+
 
 for day in days_with_extra_commits:
     d = str(day) + ' beberapa hari yang lalu'
