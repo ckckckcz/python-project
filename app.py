@@ -5,7 +5,7 @@ from random import randint, sample
 total_days = 365
 
 # Ensure every day has at least one commit
-for i in range(1, total_days + 1):
+for i in range(120, total_days + 120):
     d = str(i) + ' beberapa hari yang lalu'
     with open('file.txt', 'a') as file:
         file.write(d + '\n')
