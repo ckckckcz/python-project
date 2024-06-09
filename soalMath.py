@@ -35,4 +35,4 @@ end_time = time.time()
 total_time = round(end_time - start_time, 2)
 
 print("----------------------")
-print("Keren banget ! kamu selesai dalam waktu", total_time, "detik!")
+print("Keren banget ! kamu selesai dalam waktu", total_time, "detikJ!")
